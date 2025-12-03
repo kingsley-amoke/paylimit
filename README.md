@@ -1,98 +1,107 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+User Service – Clean Architecture (Node.js + TypeScript + Prisma + Postgres)
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project implements a modular, scalable, and plug-and-play User Service following Clean Architecture, Domain-Driven Design, and Repository Pattern.
+It provides a well-structured foundation for authentication, user management, roles, KYC status, and address management.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+🚀 Features
 
-## Description
+Clean and simplified feature-first folder structure
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Strongly typed domain entities
 
-## Project setup
+DTO mappers for request/response transformations
 
-```bash
-$ npm install
-```
+Repository interfaces for persistence abstraction
 
-## Compile and run the project
+Prisma ORM with PostgreSQL
 
-```bash
-# development
-$ npm run start
+Single-address per user enforcement
 
-# watch mode
-$ npm run start:dev
+Easy plug-and-play architecture for new modules
 
-# production mode
-$ npm run start:prod
-```
+📁 Folder Structure
+src/
+features/
+user/
+domain/
+entities/
+dto/
+value-objects/
+mappers/
+repository/
+application/
+use-cases/
+infrastructure/
+prisma/
+controllers/
+routes/
+core/
+errors/
+utils/
+config/
+main.ts
 
-## Run tests
+This structure ensures each feature is fully isolated and easy to maintain or replace.
 
-```bash
-# unit tests
-$ npm run test
+🛠️ Tech Stack
 
-# e2e tests
-$ npm run test:e2e
+Node.js (TypeScript)
 
-# test coverage
-$ npm run test:cov
-```
+Prisma ORM
 
-## Deployment
+PostgreSQL
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+Express / Fastify (your choice)
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Zod or class-validator for validation
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+Docker (optional)
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+📦 Installation
+git clone <repo-url>
+cd project
+npm install
 
-## Resources
+⚙️ Environment Setup
 
-Check out a few resources that may come in handy when working with NestJS:
+Create a .env file:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+DATABASE_URL="postgresql://user:password@localhost:5432/dbname"
+PORT=3000
 
-## Support
+📚 Database Setup
+npx prisma migrate dev
+npx prisma generate
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+▶️ Run the Application
+npm run dev
 
-## Stay in touch
+🧱 Architecture Overview
+Domain Layer
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Core business rules
 
-## License
+Entities, Value Objects, DTOs, Mappers
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+No external dependencies
+
+Application Layer
+
+Use cases (business actions)
+
+Works only with repository interfaces
+
+Infrastructure Layer
+
+Prisma models & repository implementations
+
+Controllers and routes
+
+This ensures maximum flexibility and maintainability.
+
+🧪 Testing
+npm run test
+
+📄 License
+
+MIT License – feel free to use and extend this project.
