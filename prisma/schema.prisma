@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum KycStatus {
+  NOT_VERIFIED
+  PENDING
+  VERIFIED
+}
+
+model Address {
+  id      String @id @default(uuid())
+  userId  String @unique
+  street  String
+  city    String
+  state   String
+  zipCode String
+  country String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model User {
+  id           String @id @default(uuid())
+  email        String @unique
+  passwordHash String
+  firstname    String
+  lastname     String
+  phone        String
+
+  role      UserRole
+  kycStatus KycStatus
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  address Address?
+}
